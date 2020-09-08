@@ -1,2 +1,2 @@
-# realtime-data
-Collects item bi-minutely market price data for all items
+# Panopticon
+Collects minutely bazaar data
