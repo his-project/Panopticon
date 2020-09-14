@@ -1,4 +1,4 @@
-import Panopticon from './HypixelDatabase';
+import Panopticon from './Panopticon';
 
 const database = new Panopticon('./db.sqlite');
 database.pushCurrentData().catch(err => {
