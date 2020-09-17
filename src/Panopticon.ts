@@ -1,4 +1,4 @@
-import {DataTypes, Model, Sequelize} from 'sequelize';
+import {DataTypes, Sequelize} from 'sequelize';
 import * as request from 'request-promise';
 import {ProductDataModel} from './models/ProductData';
 import {BuyOrderModel, SellOrderModel} from './models/Order';
