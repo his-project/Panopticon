@@ -1,4 +1,4 @@
-import {DataTypes, Sequelize} from 'sequelize';
+import {DataTypes, Model, Sequelize} from 'sequelize';
 import * as request from 'request-promise';
 import {ProductDataModel} from './models/ProductData';
 import {BuyOrderModel, SellOrderModel} from './models/Order';
@@ -124,6 +124,7 @@ export default class Panopticon {
       },
       {sequelize, tableName: 'SellOrders', timestamps: false}
     );
+    this.removeId();
     this.synced = false;
   }
 
@@ -131,7 +132,17 @@ export default class Panopticon {
    * Syncs models
    */
   private async sync() {
+    this.removeId();
     await this.sequelize.sync({alter: true});
+  }
+
+  /**
+   * Remove ID column from each model
+   */
+  private removeId() {
+    this.sequelize.models[this.PRODUCT_DATA_MODEL].removeAttribute('id');
+    this.sequelize.models[this.SELL_ORDER_MODEL].removeAttribute('id');
+    this.sequelize.models[this.BUY_ORDER_MODEL].removeAttribute('id');
   }
 
   /**
